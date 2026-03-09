@@ -51,7 +51,7 @@ public class FileStorage {
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            System.out.println("Error loading tasks: " + e.getMessage());
+            System.err.println("Failed to load tasks from file: " + FILE_NAME);
         }
         return tasks;
     }
