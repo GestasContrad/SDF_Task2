@@ -2,8 +2,9 @@ package org.example.manager;
 
 import org.example.model.Task;
 import org.example.storage.FileStorage;
-
 import java.util.List;
+
+// It will provide business logic for managing tasks
 
 public class TaskManager {
     private List<Task> tasks;

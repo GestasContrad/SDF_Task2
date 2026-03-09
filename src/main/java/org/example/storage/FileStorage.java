@@ -1,10 +1,11 @@
 package org.example.storage;
 
 import org.example.model.Task;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+// It will handle saving and loading tasks from file storage
 
 public class FileStorage {
     private static final String FILE_NAME = "tasks.csv";

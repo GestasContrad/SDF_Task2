@@ -1,5 +1,7 @@
 package org.example.model;
 
+// It is task object which use in task manager
+
 public class Task {
     private int id;
     private String title;
