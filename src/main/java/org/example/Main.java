@@ -27,11 +27,18 @@ public class Main {
                 case "2":
                     taskManager.listTasks();
                     break;
+                case "5":
+                    taskManager.saveToFile();
+                    break;
+                case "6":
+                    System.out.println("Saving tasks and exiting. Goodbye!");
+                    taskManager.saveToFile();
+                    running = false;
+                    break;
                 default:
-                    System.out.println("Invalid input. Please enter a number between 1 and 2.");
+                    System.out.println("Invalid input. Please enter a number between 1 and 6.");
             }
         }
         scanner.close();
     }
-
 }

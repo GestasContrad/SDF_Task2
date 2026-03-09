@@ -1,6 +1,7 @@
 package org.example.manager;
 
 import org.example.model.Task;
+import org.example.storage.FileStorage;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class TaskManager {
     private int nextId;
 
     public TaskManager() {
+        this.tasks = FileStorage.loadTasks();
         this.nextId = calculateNextId();
     }
 
@@ -38,5 +40,9 @@ public class TaskManager {
             System.out.println(task.toString());
         }
         System.out.println("-----------------");
+    }
+
+    public void saveToFile() {
+        FileStorage.saveTasks(tasks);
     }
 }
