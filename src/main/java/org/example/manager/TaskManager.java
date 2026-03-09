@@ -53,6 +53,15 @@ public class TaskManager {
         System.out.println("Task with ID " + id + " not found.");
     }
 
+    public void deleteTask(int id) {
+        boolean removed = tasks.removeIf(task -> task.getId() == id);
+        if (removed) {
+            System.out.println("Task " + id + " deleted successfully.");
+        } else {
+            System.out.println("Task with ID " + id + " not found.");
+        }
+    }
+
     public void saveToFile() {
         FileStorage.saveTasks(tasks);
     }
