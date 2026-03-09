@@ -29,9 +29,11 @@ public class Main {
                     break;
                 case "3":
                     System.out.print("Enter task ID to mark as completed: ");
+                    handleIdInput(scanner, taskManager, "complete");
                     break;
                 case "4":
                     System.out.print("Enter task ID to delete: ");
+                    handleIdInput(scanner, taskManager, "delete");
                     break;
                 case "5":
                     taskManager.saveToFile();
@@ -46,5 +48,18 @@ public class Main {
             }
         }
         scanner.close();
+    }
+
+    private static void handleIdInput(Scanner scanner, TaskManager taskManager, String action) {
+        try {
+            int id = Integer.parseInt(scanner.nextLine());
+            if (action.equals("complete")) {
+                taskManager.markAsCompleted(id);
+            } else if (action.equals("delete")) {
+                taskManager.deleteTask(id);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid ID format. Please enter a valid number.");
+        }
     }
 }
