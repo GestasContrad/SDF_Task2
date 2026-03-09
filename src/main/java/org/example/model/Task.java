@@ -26,6 +26,7 @@ public class Task {
         return completed ? "Completed" : "Pending";
     }
 
+    @Override
     public String toString() {
         return id + ". " + title + " (" + description + ") - " + getStatusText();
     }
