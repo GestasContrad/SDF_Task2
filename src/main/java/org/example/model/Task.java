@@ -22,8 +22,11 @@ public class Task {
     public void setTitle(String title) { this.title = title; }
     public void setDescription(String description) { this.description = description; }
 
+    private String getStatusText() {
+        return completed ? "Completed" : "Pending";
+    }
+
     public String toString() {
-        String status = completed ? "Completed" : "Pending";
-        return id + ". " + title + " (" + description + ") - " + status;
+        return id + ". " + title + " (" + description + ") - " + getStatusText();
     }
 }
