@@ -15,13 +15,10 @@ public class TaskManager {
     }
 
     private int calculateNextId() {
-        int maxId = 0;
-        for (Task task : tasks) {
-            if (task.getId() > maxId) {
-                maxId = task.getId();
-            }
-        }
-        return maxId + 1;
+        return tasks.stream()
+                .mapToInt(Task::getId)
+                .max()
+                .orElse(0) +1;
     }
 
     public void addTask(String title, String description) {
