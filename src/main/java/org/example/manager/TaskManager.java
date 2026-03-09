@@ -42,6 +42,17 @@ public class TaskManager {
         System.out.println("-----------------");
     }
 
+    public void markAsCompleted(int id) {
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                task.setCompleted(true);
+                System.out.println("Task " + id + " marked as completed.");
+                return;
+            }
+        }
+        System.out.println("Task with ID " + id + " not found.");
+    }
+
     public void saveToFile() {
         FileStorage.saveTasks(tasks);
     }

@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.manager.TaskManager;
 import java.util.Scanner;
+import org.example.model.Task;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,6 +27,9 @@ public class Main {
                     break;
                 case "2":
                     taskManager.listTasks();
+                    break;
+                case "3":
+                    System.out.print("Enter task ID to mark as completed: ");
                     break;
                 case "5":
                     taskManager.saveToFile();
