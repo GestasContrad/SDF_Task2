@@ -1,10 +1,11 @@
 package org.example.storage;
 
 import org.example.model.Task;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+// It will handle saving and loading tasks from file storage
 
 public class FileStorage {
     private static final String FILE_NAME = "tasks.csv";
@@ -24,6 +25,17 @@ public class FileStorage {
         }
     }
 
+    public static Task parseTask(String line) {
+        String[] parts = line.split(DELIMITER);
+
+        int id = Integer.parseInt(parts[0]);
+        String title = parts[1];
+        String description = parts[2];
+        boolean completed = Boolean.parseBoolean(parts[3]);
+
+        return new Task(id, title, description, completed);
+    }
+
     public static List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
         File file = new File(FILE_NAME);
@@ -35,18 +47,12 @@ public class FileStorage {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(DELIMITER);
-                if (parts.length == 4) {
-                    int id = Integer.parseInt(parts[0]);
-                    String title = parts[1];
-                    String description = parts[2];
-                    boolean isCompleted = Boolean.parseBoolean(parts[3]);
-
-                    tasks.add(new Task(id, title, description, isCompleted));
+                if (!line.isBlank()) {
+                    tasks.add(parseTask(line));
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            System.out.println("Error loading tasks: " + e.getMessage());
+            System.err.println("Failed to load tasks from file: " + FILE_NAME);
         }
         return tasks;
     }

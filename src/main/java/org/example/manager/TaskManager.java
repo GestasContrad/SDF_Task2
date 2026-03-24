@@ -2,8 +2,9 @@ package org.example.manager;
 
 import org.example.model.Task;
 import org.example.storage.FileStorage;
-
 import java.util.List;
+
+// It will provide business logic for managing tasks
 
 public class TaskManager {
     private List<Task> tasks;
@@ -15,13 +16,10 @@ public class TaskManager {
     }
 
     private int calculateNextId() {
-        int maxId = 0;
-        for (Task task : tasks) {
-            if (task.getId() > maxId) {
-                maxId = task.getId();
-            }
-        }
-        return maxId + 1;
+        return tasks.stream()
+                .mapToInt(Task::getId)
+                .max()
+                .orElse(0) +1;
     }
 
     public void addTask(String title, String description) {
